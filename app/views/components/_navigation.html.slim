@@ -1,0 +1,27 @@
+.top-bar
+  .top-bar-left
+    ul.menu
+      li.menu-text
+        | Bon Voyage
+      - if current_user && true_user.admin?
+        - if current_user != true_user
+          li
+            = active_link_to 'Stop Impersonating', stop_impersonating_admin_users_path, data: { turbolinks: false }
+        - else
+          li
+            = active_link_to 'Admin', admin_users_path, data: { turbolinks: false }
+  .top-bar-right
+    ul.dropdown.menu[data-dropdown-menu]
+      li
+        a[href="#"]
+          | Settings
+        ul.menu.vertical
+          li
+            = active_link_to 'My Profile', edit_user_registration_path
+            = active_link_to 'Change Password', edit_password_users_path
+      - if current_user
+        li
+          = active_link_to 'Sign Out', sign_out_path
+      - else
+        li
+          = active_link_to 'Sign In', sign_in_path

@@ -1,0 +1,12 @@
+//We can add some default styles here in voyage
+
+//Figure out what foundations visual grid settings are and turn them on here
+//$visual-grid: true;
+//$visual-grid-color: #9cf !default;
+//$visual-grid-index: front !default;
+//$visual-grid-opacity: 0.1 !default;
+.main { margin: 10px 30px; }
+
+a.active {
+  background-color: rgba(220, 81, 72, 0.3);
+}

@@ -1,0 +1,30 @@
+#!/bin/bash
+
+echo "What would you like to name the app?"
+read -p  "Please specify with underscores (e.g. headway_blog): "
+
+app_name=$REPLY
+app_name_upper_camel=`echo $REPLY | perl -pe 's/(^|_)./uc($&)/ge;s/_//g'`
+
+echo $app_name
+echo $app_name_upper_camel
+
+echo "Substituting thatconf for $app_name and HeadwayRailsTemplate for $app_name_upper_camel"
+
+grep -lr --exclude-dir=".git" --exclude='\./bin/voyage' -e "thatconf" . | xargs sed -i "" "s/thatconf/$app_name/g"
+
+grep -lr --exclude-dir=".git" --exclude='\./bin/voyage' -e "HeadwayRailsTemplate" . | xargs sed -i "" "s/HeadwayRailsTemplate/$app_name_upper_camel/g"
+
+mv app/assets/javascripts/thatconf.js app/assets/javascripts/$app_name.js
+mv app/assets/stylesheets/thatconf.scss app/assets/stylesheets/$app_name.scss
+
+[ -s "$HOME/.rvm/scripts/rvm" ] && . "$HOME/.rvm/scripts/rvm"
+rvm use `cat .ruby-version`@$app_name --create
+
+if [[ -d ".git" ]]; then
+  echo "Removing .git folder"
+  rm -rf .git
+fi
+
+echo "Initializing a new git repo"
+git init
