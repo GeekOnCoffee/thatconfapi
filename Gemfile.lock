@@ -728,6 +728,7 @@ DEPENDENCIES
   friendly_id
   gon
   high_voltage
+  httparty
   image_processing
   jquery-rails
   jquery-turbolinks

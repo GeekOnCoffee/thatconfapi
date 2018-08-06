@@ -6,4 +6,8 @@ JSONAPI.configure do |config|
   config.top_level_meta_record_count_key = :record_count
 
   config.resource_cache = Rails.cache
+
+  config.default_paginator = :paged
+
+  config.default_page_size = 10
 end

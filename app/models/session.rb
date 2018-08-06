@@ -1,9 +1,9 @@
 class Session < ApplicationRecord
-  belongs_to :room
-  belongs_to :speaker
-  belongs_to :primary_category, class_name: 'Category'
-  belongs_to :secondary_category, class_name: 'Category'
-  belongs_to :level
+  belongs_to :room, optional: true
+  belongs_to :speaker, optional: true
+  belongs_to :primary_category, class_name: 'Category', optional: true
+  belongs_to :secondary_category, class_name: 'Category', optional: true
+  belongs_to :level, optional: true
 end
 
 # rubocop:disable Metrics/LineLength, Lint/UnneededCopDisableDirective

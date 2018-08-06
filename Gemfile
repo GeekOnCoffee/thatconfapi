@@ -171,4 +171,6 @@ group :production do
   gem 'puma'
 end
 
+gem 'httparty'
+
 # rubocop:enable Metrics/LineLength
