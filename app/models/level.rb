@@ -1,4 +1,5 @@
 class Level < ApplicationRecord
+  has_many :sessions
 end
 
 # rubocop:disable Metrics/LineLength, Lint/UnneededCopDisableDirective
