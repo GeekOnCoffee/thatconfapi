@@ -50,6 +50,7 @@ Rails.application.routes.draw do
 
   end
   root 'high_voltage/pages#show', id: 'welcome'
+  resources :reset, only: [:index]
 
   # API-specific routes
   namespace 'api' do
